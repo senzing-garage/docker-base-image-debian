@@ -6,14 +6,15 @@ LABEL Name="senzing-docker-base-image-debian" \
 
 # Install packages via apt
 
-RUN apt-get update \
- && apt-get install -y --no-install-recommends \
+RUN apt update \
+ && apt install -y --no-install-recommends \
       apt-transport-https \
       git \
       gnupg2 \
       jq \
       make \
       maven \
+      software-properties-common \
       sudo \
       wget \
  && rm -rf /var/lib/apt/lists/*
@@ -24,4 +25,5 @@ RUN apt-get update \
 RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - \
  && add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ \
  && apt update \
- && apt -y install adoptopenjdk-8-hotspot
+ && apt install -y adoptopenjdk-8-hotspot \
+ && rm -rf /var/lib/apt/lists/*
