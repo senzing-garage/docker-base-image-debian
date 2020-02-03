@@ -6,24 +6,22 @@ LABEL Name="senzing-docker-base-image-debian" \
 
 # Install packages via apt
 
-RUN echo "deb http://ftp.us.debian.org/debian sid main" >> /etc/apt/sources.list \
- && apt-get update \
+RUN apt-get update \
  && apt-get install -y --no-install-recommends \
-     apt-transport-https \
-     git \
-     gnupg2 \
-     jq \
-     make \
-     maven \
-     openjdk-8-jdk \
-     sudo \
-     wget \
+      apt-transport-https \
+      git \
+      gnupg2 \
+      jq \
+      make \
+      maven \
+      sudo \
+      wget \
  && rm -rf /var/lib/apt/lists/*
 
 # Install Java-8 - To be removed after Senzing API server supports Java 11
 # Once fixed, add "default-jdk" to "apt install ..."
 
-# RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add -
-# RUN add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
-# RUN apt update
-# RUN apt install adoptopenjdk-8-hotspot
+RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - \
+ && add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ \
+ && apt update \
+ && apt -y install adoptopenjdk-8-hotspot
