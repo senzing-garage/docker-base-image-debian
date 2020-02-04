@@ -13,7 +13,6 @@ RUN apt update \
       gnupg2 \
       jq \
       make \
-      maven \
       software-properties-common \
       sudo \
       wget \
@@ -26,4 +25,12 @@ RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | a
  && add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ \
  && apt update \
  && apt install -y adoptopenjdk-8-hotspot \
+ && rm -rf /var/lib/apt/lists/*
+
+# Tricky code: Since maven tries to install its own Java,
+# maven needs to be installed after the required Java is installed.
+
+RUN apt update \
+ && apt install -y --no-install-recommends \
+      maven \
  && rm -rf /var/lib/apt/lists/*
