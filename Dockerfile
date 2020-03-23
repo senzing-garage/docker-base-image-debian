@@ -30,7 +30,19 @@ RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | a
 # Tricky code: Since maven tries to install its own Java,
 # maven needs to be installed after the required Java is installed.
 
-RUN apt update \
- && apt install -y --no-install-recommends \
-      maven \
- && rm -rf /var/lib/apt/lists/*
+# RUN apt update \
+#  && apt install -y --no-install-recommends \
+#       maven \
+#  && rm -rf /var/lib/apt/lists/*
+
+# Note: apt install does not download maven 3.6.3.
+# A more "manual" method is needed.
+# See https://linuxize.com/post/how-to-install-apache-maven-on-debian-10/
+
+RUN wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /opt \
+ && tar xf /opt/apache-maven-*.tar.gz -C /opt \
+ && ln -s /opt/apache-maven-3.6.3 /opt/maven
+
+ENV M2_HOME /opt/maven
+ENV MAVEN_HOME /opt/maven
+ENV PATH ${PATH}:${M2_HOME}/bin
