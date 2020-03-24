@@ -2,8 +2,8 @@
 
 ## Overview
 
-This repository shows best practices for creating a `docker-base-image-debian` repository.
-See [best practices](docs/best-practices.md).
+This repository shows best practices for creating a Debian-based
+docker image upon which to deploy Senzing.
 
 ### Related artifacts
 
@@ -77,7 +77,7 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
 
     ```console
     sudo docker build \
-      --tag senzing/docker-base-image-debian \
+      --tag senzing/base-image-debian \
       https://github.com/senzing/docker-base-image-debian.git
     ```
 
@@ -85,7 +85,7 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
 
     ```console
     cd ${GIT_REPOSITORY_DIR}
-    sudo docker build --tag senzing/docker-base-image-debian .
+    sudo docker build --tag senzing/base-image-debian .
     ```
 
 1. **Option #3:** Using `make` command.
