@@ -1,10 +1,10 @@
 FROM debian:10.2
 
-LABEL Name="senzing-docker-base-image-debian" \
+LABEL Name="senzing/base-image-debian" \
       Maintainer="support@senzing.com" \
-      Version="1.0.1"
+      Version="1.0.3"
 
-# Install packages via apt
+# Install packages via apt.
 
 RUN apt update \
  && apt install -y --no-install-recommends \
@@ -18,8 +18,7 @@ RUN apt update \
       wget \
  && rm -rf /var/lib/apt/lists/*
 
-# Install Java-8 - To be removed after Senzing API server supports Java 11
-# Once fixed, add "default-jdk" to "apt install ..."
+# Install Java-11.
 
 RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - \
  && add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ \
@@ -29,12 +28,6 @@ RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | a
 
 # Tricky code: Since maven tries to install its own Java,
 # maven needs to be installed after the required Java is installed.
-
-# RUN apt update \
-#  && apt install -y --no-install-recommends \
-#       maven \
-#  && rm -rf /var/lib/apt/lists/*
-
 # Note: apt install does not download maven 3.6.3.
 # A more "manual" method is needed.
 # See https://linuxize.com/post/how-to-install-apache-maven-on-debian-10/
