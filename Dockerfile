@@ -1,8 +1,8 @@
-FROM debian:10.2
+FROM debian:10.10
 
 LABEL Name="senzing/base-image-debian" \
       Maintainer="support@senzing.com" \
-      Version="1.0.3"
+      Version="1.0.4"
 
 # Install packages via apt.
 
