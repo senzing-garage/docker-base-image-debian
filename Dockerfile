@@ -1,8 +1,8 @@
-FROM debian:10.10
+FROM debian:10.10@sha256:e5cfab8012b17d80f93a7f567797b0c8a2839069d4f50e499152162152518663
 
 LABEL Name="senzing/base-image-debian" \
       Maintainer="support@senzing.com" \
-      Version="1.0.4"
+      Version="1.0.5"
 
 # Install packages via apt.
 
