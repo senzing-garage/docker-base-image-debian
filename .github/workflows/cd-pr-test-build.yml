@@ -1,9 +1,9 @@
-name: Pull Request Locally Test Merge Into Master
+name: Pull Request Locally Test Merge Into main
 
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   buildTestBaseImageDebian:
