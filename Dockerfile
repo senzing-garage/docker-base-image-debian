@@ -5,7 +5,7 @@ ENV REFRESHED_AT=2022-09-27
 
 LABEL Name="senzing/base-image-debian" \
       Maintainer="support@senzing.com" \
-      Version="1.0.10"
+      Version="1.0.11"
 
 # Install packages via apt.
 
