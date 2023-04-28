@@ -10,43 +10,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed in 1.0.16
 
- - Updated to `debian:11.6-slim@sha256:7acda01e55b086181a6fa596941503648e423091ca563258e2c1657d140355b1`
+- Updated to `debian:11.6-slim@sha256:7acda01e55b086181a6fa596941503648e423091ca563258e2c1657d140355b1`
 
 ## [1.0.15] - 2023-02-10
 
 ### Changed in 1.0.15
 
- - Updated to `debian:11.6-slim@sha256:8eaee63a5ea83744e62d5bf88e7d472d7f19b5feda3bfc6a2304cc074f269269`
+- Updated to `debian:11.6-slim@sha256:8eaee63a5ea83744e62d5bf88e7d472d7f19b5feda3bfc6a2304cc074f269269`
 
 ## [1.0.14] - 2023-01-12
 
 ### Changed in 1.0.14
 
- - Updated to `11.6-slim@sha256:98d3b4b0cee264301eb1354e0b549323af2d0633e1c43375d0b25c01826b6790`
+- Updated to `11.6-slim@sha256:98d3b4b0cee264301eb1354e0b549323af2d0633e1c43375d0b25c01826b6790`
 
 ## [1.0.13] - 2022-10-27
 
 ### Changed in 1.0.13
 
- - Updated to `debian:11.5-slim@sha256:e8ad0bc7d0ee6afd46e904780942033ab83b42b446b58efa88d31ecf3adf4678`
+- Updated to `debian:11.5-slim@sha256:e8ad0bc7d0ee6afd46e904780942033ab83b42b446b58efa88d31ecf3adf4678`
 
 ## [1.0.12] - 2022-10-11
 
 ### Changed in 1.0.12
 
- - Updated to `debian:11.5-slim@sha256:b46fc4e6813f6cbd9f3f6322c72ab974cc0e75a72ca02730a8861e98999875c7`
+- Updated to `debian:11.5-slim@sha256:b46fc4e6813f6cbd9f3f6322c72ab974cc0e75a72ca02730a8861e98999875c7`
 
 ## [1.0.11] - 2022-09-27
 
 ### Changed in 1.0.11
 
- - Updated to `debian:11.5-slim@sha256:5cf1d98cd0805951484f33b34c1ab25aac7007bb41c8b9901d97e4be3cf3ab04`
+- Updated to `debian:11.5-slim@sha256:5cf1d98cd0805951484f33b34c1ab25aac7007bb41c8b9901d97e4be3cf3ab04`
 
 ## [1.0.10] - 2022-08-15
 
 ### Changed in 1.0.10
 
- - Updated to `debian:11.4-slim@sha256:a811e62769a642241b168ac34f615fb02da863307a14c4432cea8e5a0f9782b8`
+- Updated to `debian:11.4-slim@sha256:a811e62769a642241b168ac34f615fb02da863307a14c4432cea8e5a0f9782b8`
 
 ## [1.0.9] - 2022-06-27
 
