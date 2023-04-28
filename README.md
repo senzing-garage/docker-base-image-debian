@@ -51,9 +51,9 @@ This repository assumes a working knowledge of:
 
 The following software programs need to be installed:
 
-1. [git](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/install-git.md)
-1. [make](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/install-make.md)
-1. [docker](https://github.com/Senzing/knowledge-base/blob/main/HOWTO/install-docker.md)
+1. [git](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/git.md)
+1. [make](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/make.md)
+1. [docker](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/docker.md)
 
 ### Clone repository
 
