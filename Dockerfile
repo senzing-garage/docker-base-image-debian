@@ -5,7 +5,7 @@ ENV REFRESHED_AT=2023-06-15
 
 LABEL Name="senzing/base-image-debian" \
       Maintainer="support@senzing.com" \
-      Version="1.0.18"
+      Version="1.0.19"
 
 # Install packages via apt.
 
@@ -35,9 +35,9 @@ RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | a
 # A more "manual" method is needed.
 # See https://linuxize.com/post/how-to-install-apache-maven-on-debian-10/
 
-RUN wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -P /opt \
+RUN wget https://downloads.apache.org/maven/maven-3/3.9.2/binaries/apache-maven-3.9.2-bin.tar.gz -P /opt \
  && tar xf /opt/apache-maven-*.tar.gz -C /opt \
- && ln -s /opt/apache-maven-3.6.3 /opt/maven
+ && ln -s /opt/apache-maven-3.9.2 /opt/maven
 
 ENV M2_HOME /opt/maven
 ENV MAVEN_HOME /opt/maven
