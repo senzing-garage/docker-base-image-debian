@@ -1,7 +1,7 @@
-ARG BASE_IMAGE=debian:11.7-slim@sha256:924df86f8aad741a0134b2de7d8e70c5c6863f839caadef62609c1be1340daf5
+ARG BASE_IMAGE=debian:11.7-slim@sha256:3bc5e94a0e8329c102203c3f5f26fd67835f0c81633dd6949de0557867a87fac
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2023-06-15
+ENV REFRESHED_AT=2023-09-11
 
 LABEL Name="senzing/base-image-debian" \
       Maintainer="support@senzing.com" \
