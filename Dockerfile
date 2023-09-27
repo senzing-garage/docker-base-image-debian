@@ -38,9 +38,9 @@ RUN apt update \
 # A more "manual" method is needed.
 # See https://linuxize.com/post/how-to-install-apache-maven-on-debian-10/
 
-RUN wget https://downloads.apache.org/maven/maven-3/3.9.2/binaries/apache-maven-3.9.2-bin.tar.gz -P /opt \
+RUN wget https://downloads.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz -P /opt \
  && tar xf /opt/apache-maven-*.tar.gz -C /opt \
- && ln -s /opt/apache-maven-3.9.2 /opt/maven
+ && ln -s /opt/apache-maven-3.9.4 /opt/maven
 
 ENV M2_HOME /opt/maven
 ENV MAVEN_HOME /opt/maven
