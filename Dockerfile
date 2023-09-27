@@ -23,10 +23,13 @@ RUN apt update \
 
 # Install Java-11.
 
-RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add - \
- && add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ \
- && apt update \
- && apt install -y adoptopenjdk-11-hotspot \
+RUN mkdir -p /etc/apt/keyrings \
+ && wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public > /etc/apt/keyrings/adoptium.asc
+
+RUN echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" >> /etc/apt/sources.list
+
+RUN apt update \
+ && apt install -y temurin-11-jdk \
  && rm -rf /var/lib/apt/lists/*
 
 # Tricky code: Since maven tries to install its own Java,
@@ -35,9 +38,9 @@ RUN wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | a
 # A more "manual" method is needed.
 # See https://linuxize.com/post/how-to-install-apache-maven-on-debian-10/
 
-RUN wget https://downloads.apache.org/maven/maven-3/3.9.2/binaries/apache-maven-3.9.2-bin.tar.gz -P /opt \
+RUN wget https://downloads.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz -P /opt \
  && tar xf /opt/apache-maven-*.tar.gz -C /opt \
- && ln -s /opt/apache-maven-3.9.2 /opt/maven
+ && ln -s /opt/apache-maven-3.9.4 /opt/maven
 
 ENV M2_HOME /opt/maven
 ENV MAVEN_HOME /opt/maven
