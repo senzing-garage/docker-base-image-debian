@@ -1,11 +1,11 @@
-ARG BASE_IMAGE=debian:11.7-slim@sha256:3bc5e94a0e8329c102203c3f5f26fd67835f0c81633dd6949de0557867a87fac
+ARG BASE_IMAGE=debian:11.7-slim@sha256:c618be84fc82aa8ba203abbb07218410b0f5b3c7cb6b4e7248fda7785d4f9946
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2023-09-11
+ENV REFRESHED_AT=2023-09-25
 
 LABEL Name="senzing/base-image-debian" \
       Maintainer="support@senzing.com" \
-      Version="1.0.19"
+      Version="1.0.20"
 
 # Install packages via apt.
 
