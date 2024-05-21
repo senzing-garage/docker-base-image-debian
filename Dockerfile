@@ -5,7 +5,7 @@ ENV REFRESHED_AT=2024-05-21
 
 LABEL Name="senzing/base-image-debian" \
   Maintainer="support@senzing.com" \
-  Version="1.0.22"
+  Version="1.0.23"
 
 # Install packages via apt.
 
@@ -38,9 +38,9 @@ RUN apt update \
 # A more "manual" method is needed.
 # See https://linuxize.com/post/how-to-install-apache-maven-on-debian-10/
 
-RUN wget https://downloads.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz -P /opt \
+RUN wget https://downloads.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz -P /opt \
   && tar xf /opt/apache-maven-*.tar.gz -C /opt \
-  && ln -s /opt/apache-maven-3.9.4 /opt/maven
+  && ln -s /opt/apache-maven-3.9.6 /opt/maven
 
 ENV M2_HOME /opt/maven
 ENV MAVEN_HOME /opt/maven
