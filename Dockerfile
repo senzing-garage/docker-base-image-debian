@@ -7,17 +7,16 @@ LABEL Name="senzing/base-image-debian" \
   Maintainer="support@senzing.com" \
   Version="1.0.23"
 
-# Install packages via apt.
+# Install packages via apt-get.
 
-RUN apt update \
-  && apt install -y --no-install-recommends \
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
   apt-transport-https \
   git \
   gnupg2 \
   jq \
   make \
   software-properties-common \
-  sudo \
   wget \
   && rm -rf /var/lib/apt/lists/*
 
@@ -28,19 +27,29 @@ RUN mkdir -p /etc/apt/keyrings \
 
 RUN echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" >> /etc/apt/sources.list
 
-RUN apt update \
-  && apt install -y temurin-11-jdk \
+RUN apt-get update \
+  && apt-get install -y temurin-11-jdk \
   && rm -rf /var/lib/apt/lists/*
 
 # Tricky code: Since maven tries to install its own Java,
 # maven needs to be installed after the required Java is installed.
-# Note: apt install does not download maven 3.6.3.
+# Note: apt install does not download maven 3.9.6.
 # A more "manual" method is needed.
 # See https://linuxize.com/post/how-to-install-apache-maven-on-debian-10/
 
 RUN wget https://downloads.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz -P /opt \
   && tar xf /opt/apache-maven-*.tar.gz -C /opt \
   && ln -s /opt/apache-maven-3.9.6 /opt/maven
+
+# check for java 11
+
+HEALTHCHECK CMD java --version | grep -E "11\.[0-9]+\.[0-9]+"
+
+# Make non-root container.
+
+USER 1001
+
+# Set environment variables for USER 1001.
 
 ENV M2_HOME /opt/maven
 ENV MAVEN_HOME /opt/maven
