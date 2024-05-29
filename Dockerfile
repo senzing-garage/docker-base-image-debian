@@ -17,7 +17,6 @@ RUN apt-get update \
   jq \
   make \
   software-properties-common \
-  sudo \
   wget \
   && rm -rf /var/lib/apt/lists/*
 
