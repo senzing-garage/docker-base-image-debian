@@ -51,6 +51,6 @@ USER 1001
 
 # Set environment variables for USER 1001.
 
-ENV M2_HOME /opt/maven
-ENV MAVEN_HOME /opt/maven
-ENV PATH ${PATH}:${M2_HOME}/bin
+ENV M2_HOME=/opt/maven
+ENV MAVEN_HOME=/opt/maven
+ENV PATH=${PATH}:${M2_HOME}/bin
