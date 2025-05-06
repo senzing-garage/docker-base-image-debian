@@ -125,7 +125,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed in 1.0.5
 
-- Updated Debain version 10.10
+- Updated Debian version 10.10
 
 ## [1.0.4] - 2021-07-15
 
