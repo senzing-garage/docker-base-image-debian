@@ -1,7 +1,7 @@
 ARG BASE_IMAGE=debian:13.1-slim@sha256:c2880112cc5c61e1200c26f106e4123627b49726375eb5846313da9cca117337
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2024-06-24
+ENV REFRESHED_AT=2025-09-25
 
 LABEL Name="senzing/base-image-debian" \
       Maintainer="support@senzing.com" \
@@ -18,13 +18,10 @@ RUN apt-get update \
       jq \
       make \
       wget \
- && apt-get install -y --reinstall ca-certificates \
- && update-ca-certificates \
  && rm -rf /var/lib/apt/lists/*
 
 # Install Java-17.
 
-# RUN mkdir -p /etc/apt/keyrings
 RUN wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null \
  && echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | tee /etc/apt/sources.list.d/adoptium.list
 
@@ -42,9 +39,9 @@ RUN wget https://downloads.apache.org/maven/maven-3/3.9.11/binaries/apache-maven
  && tar xf /opt/apache-maven-*.tar.gz -C /opt \
  && ln -s /opt/apache-maven-3.9.11 /opt/maven
 
-# check for java 11
+# check for java 17
 
-HEALTHCHECK CMD java --version | grep -E "11\.[0-9]+\.[0-9]+"
+HEALTHCHECK CMD java --version | grep -E "17\.[0-9]+\.[0-9]+"
 
 # Make non-root container.
 
