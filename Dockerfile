@@ -14,6 +14,7 @@ RUN apt-get update \
       apt-transport-https \
       git \
       gnupg2 \
+      gpg \
       jq \
       make \
       wget \
@@ -21,10 +22,8 @@ RUN apt-get update \
 
 # Install Java-11.
 
-RUN mkdir -p /etc/apt/keyrings \
- && wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public > /etc/apt/keyrings/adoptium.asc
-
-RUN echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" >> /etc/apt/sources.list
+RUN wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null \
+ && echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | tee /etc/apt/sources.list.d/adoptium.list
 
 RUN apt-get update \
  && apt-get install -y temurin-11-jdk \
