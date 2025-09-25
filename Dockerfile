@@ -20,13 +20,13 @@ RUN apt-get update \
       wget \
  && rm -rf /var/lib/apt/lists/*
 
-# Install Java-11.
+# Install Java-17.
 
 RUN wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null \
  && echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | tee /etc/apt/sources.list.d/adoptium.list
 
 RUN apt-get update \
- && apt-get install -y temurin-11-jdk \
+ && apt-get install -y temurin-17-jdk \
  && rm -rf /var/lib/apt/lists/*
 
 # Tricky code: Since maven tries to install its own Java,
