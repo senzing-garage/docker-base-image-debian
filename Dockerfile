@@ -18,6 +18,8 @@ RUN apt-get update \
       jq \
       make \
       wget \
+ && apt-get install -y --reinstall ca-certificates \
+ && update-ca-certificates \
  && rm -rf /var/lib/apt/lists/*
 
 # Install Java-17.
