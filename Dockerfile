@@ -1,35 +1,35 @@
-ARG BASE_IMAGE=debian:11.11-slim@sha256:6d3c63184632046054ae709964befc943ecffa140adc697ca955a10002a79c08
+ARG BASE_IMAGE=debian:13.1-slim@sha256:c2880112cc5c61e1200c26f106e4123627b49726375eb5846313da9cca117337
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2024-06-24
+ENV REFRESHED_AT=2025-09-25
 
 LABEL Name="senzing/base-image-debian" \
-  Maintainer="support@senzing.com" \
-  Version="1.0.24"
+      Maintainer="support@senzing.com" \
+      Version="1.0.24"
 
 # Install packages via apt-get.
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
-  apt-transport-https \
-  git \
-  gnupg2 \
-  jq \
-  make \
-  software-properties-common \
-  wget \
-  && rm -rf /var/lib/apt/lists/*
+ && apt-get install -y --no-install-recommends \
+      apt-transport-https \
+      git \
+      gnupg2 \
+      gpg \
+      jq \
+      make \
+      wget \
+ && apt-get install -y --reinstall ca-certificates \
+ && update-ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
 
-# Install Java-11.
+# Install Java-17.
 
-RUN mkdir -p /etc/apt/keyrings \
-  && wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public > /etc/apt/keyrings/adoptium.asc
-
-RUN echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" >> /etc/apt/sources.list
+RUN wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | gpg --dearmor | tee /etc/apt/trusted.gpg.d/adoptium.gpg > /dev/null \
+ && echo "deb https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | tee /etc/apt/sources.list.d/adoptium.list
 
 RUN apt-get update \
-  && apt-get install -y temurin-11-jdk \
-  && rm -rf /var/lib/apt/lists/*
+ && apt-get install -y temurin-17-jdk \
+ && rm -rf /var/lib/apt/lists/*
 
 # Tricky code: Since maven tries to install its own Java,
 # maven needs to be installed after the required Java is installed.
@@ -38,12 +38,12 @@ RUN apt-get update \
 # See https://linuxize.com/post/how-to-install-apache-maven-on-debian-10/
 
 RUN wget https://downloads.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz -P /opt \
-  && tar xf /opt/apache-maven-*.tar.gz -C /opt \
-  && ln -s /opt/apache-maven-3.9.11 /opt/maven
+ && tar xf /opt/apache-maven-*.tar.gz -C /opt \
+ && ln -s /opt/apache-maven-3.9.11 /opt/maven
 
-# check for java 11
+# check for java 17
 
-HEALTHCHECK CMD java --version | grep -E "11\.[0-9]+\.[0-9]+"
+HEALTHCHECK CMD java --version | grep -E "17\.[0-9]+\.[0-9]+"
 
 # Make non-root container.
 
