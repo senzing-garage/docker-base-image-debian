@@ -20,7 +20,5 @@
     "temurin",
     "toplevel"
   ],
-  "ignorePaths": [
-    ".git/**"
-  ]
+  "ignorePaths": [".git/**"]
 }
