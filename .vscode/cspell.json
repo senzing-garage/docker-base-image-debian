@@ -2,25 +2,25 @@
   "version": "0.2",
   "language": "en",
   "words": [
-    "CCLA",
-    "CODEOWNER",
-    "ICLA",
-    "Senzing",
     "adoptium",
     "adoptopenjdk",
     "alnum",
     "buildx",
+    "CCLA",
+    "CODEOWNER",
+    "cooldown",
     "dearmor",
+    "dockerfiles",
     "dockerhub",
     "esbenp",
     "hotspot",
+    "ICLA",
     "keyrings",
     "pydevproject",
+    "Senzing",
     "stackoverflow",
     "temurin",
     "toplevel"
   ],
-  "ignorePaths": [
-    ".git/**"
-  ]
+  "ignorePaths": [".git/**"]
 }
