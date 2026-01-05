@@ -1,7 +1,7 @@
-ARG BASE_IMAGE=debian:13.2-slim@sha256:e711a7b30ec1261130d0a121050b4ed81d7fb28aeabcf4ea0c7876d4e9f5aca2
+ARG BASE_IMAGE=debian:13.2-slim@sha256:4bcb9db66237237d03b55b969271728dd3d955eaaa254b9db8a3db94550b1885
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2025-09-25
+ENV REFRESHED_AT=2026-01-05
 
 LABEL Name="senzing/base-image-debian" \
       Maintainer="support@senzing.com" \
@@ -37,9 +37,9 @@ RUN apt-get update \
 # A more "manual" method is needed.
 # See https://linuxize.com/post/how-to-install-apache-maven-on-debian-10/
 
-RUN wget https://downloads.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz -P /opt \
+RUN wget https://downloads.apache.org/maven/maven-3/3.9.12/binaries/apache-maven-3.9.12-bin.tar.gz -P /opt \
  && tar xf /opt/apache-maven-*.tar.gz -C /opt \
- && ln -s /opt/apache-maven-3.9.11 /opt/maven
+ && ln -s /opt/apache-maven-3.9.12 /opt/maven
 
 # check for java 17
 
