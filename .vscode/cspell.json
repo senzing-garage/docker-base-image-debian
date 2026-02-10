@@ -15,6 +15,7 @@
     "esbenp",
     "hotspot",
     "ICLA",
+    "kernelsam",
     "keyrings",
     "pydevproject",
     "Senzing",
@@ -22,5 +23,7 @@
     "temurin",
     "toplevel"
   ],
-  "ignorePaths": [".git/**"]
+  "ignorePaths": [
+    ".git/**"
+  ]
 }
